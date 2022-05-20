@@ -12,10 +12,10 @@ LRESULT CALLBACK hookFunction(int code, WPARAM wParam, LPARAM lParam) {
 	KBDLLHOOKSTRUCT* key = (KBDLLHOOKSTRUCT*)lParam;
 	char vkchar = (char)MapVirtualKey(key->vkCode, MAPVK_VK_TO_CHAR);
 
-	if (key->vkCode == VK_F1 && wParam == WM_KEYUP) {
+	if (vkchar == 'Z' && wParam == WM_KEYUP) {
 		toggle = !toggle;
 	}
-	if (toggle && (vkchar == 'W' || vkchar == 'A' || vkchar == 'S' || vkchar == 'D' || vkchar == 'E' || vkchar == 'F' || vkchar == '1' || vkchar == '2' || vkchar == '3' || vkchar == '4')) {
+	if (toggle && (vkchar == 'W' || vkchar == 'A' || vkchar == 'S' || vkchar == 'D' || vkchar == 'E' || vkchar == '1' || vkchar == '2' || vkchar == '3' || vkchar == '4' || key->vkCode == VK_SPACE)) {
 		char buffer[2];
 
 		buffer[0] = vkchar;
